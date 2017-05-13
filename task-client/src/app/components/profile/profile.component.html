@@ -1,0 +1,31 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="pill" href="#profile">Personal Information</a></li>
+    <li><a data-toggle="pill" href="#other">Options</a></li>
+  </ul>
+  <br>
+  <div class="tab-content">
+    <div id="profile" class="tab-pane fade in active">
+      <div class="form-group col-sm-8">
+        <label for="username">AccountID</label>
+        <input type="text" class="form-control" id="username"
+               name="username" disabled value="{{username}}">
+      </div>
+      <div class="form-group col-sm-8">
+        <label for="nickname">Username</label>
+        <input type="text" class="form-control" id="nickname"
+               name="nickname" disabled value="{{nickname}}">
+      </div>
+      <div class="form-group col-sm-8">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+               name="email" disabled value="{{email}}">
+      </div>
+    </div>
+    <div id="other" class="tab-pane fade">
+      <form class="navbar-form">
+        <button type="button" class="btn btn-large btn-success" routerLink="/home" (click)="logout()">Log Out {{email}}</button>
+      </form>
+    </div>
+  </div>
+</div>

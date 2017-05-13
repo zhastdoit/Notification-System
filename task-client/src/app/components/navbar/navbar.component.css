@@ -1,0 +1,40 @@
+.navbar-custom {
+  background-color:#656d74;
+  border-radius:0;
+}
+
+.navbar-nav > li > a {
+  padding-top:30px !important;
+  padding-bottom:30px !important;
+  font-size: 20px !important;
+}
+.navbar {
+  min-height: 80px !important
+}
+
+.navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {
+  background-color: transparent;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  min-width: 300px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 1px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.logo-bittiger {
+  height: 32px;
+  margin-top: 10px;
+}
+
+
