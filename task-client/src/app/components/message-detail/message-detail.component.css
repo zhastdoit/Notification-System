@@ -5,9 +5,8 @@
   resize: none;
 }
 
-
 .main_container{
-  margin-top: 68px;
+  margin-top: 50px;
   display: block;
   height: auto;
   border: 1px solid #ccc;
@@ -20,9 +19,17 @@
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.div-margin-title{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
 .no-border {
   border: 0;
   border-bottom: 1px solid #ccc;
   box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
+.font-grey{
+  color: lightgrey;
 }

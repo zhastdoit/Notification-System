@@ -55,6 +55,9 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_login_login_component__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_sidebar_sidebar_component__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_new_message_new_message_component__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_message_module_message_module_component__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_message_list_message_list_component__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_message_detail_message_detail_component__ = __webpack_require__(236);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -62,6 +65,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -93,7 +99,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_13__components_login_login_component__["a" /* LoginComponent */],
             __WEBPACK_IMPORTED_MODULE_14__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_new_message_new_message_component__["a" /* NewMessageComponent */]
+            __WEBPACK_IMPORTED_MODULE_15__components_new_message_new_message_component__["a" /* NewMessageComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__components_message_module_message_module_component__["a" /* MessageModuleComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__components_message_list_message_list_component__["a" /* MessageListComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_message_detail_message_detail_component__["a" /* MessageDetailComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -124,7 +133,15 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_profile_component__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_main_module_main_module_component__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_new_message_new_message_component__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_message_module_message_module_component__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_message_list_message_list_component__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_sidebar_sidebar_component__ = __webpack_require__(224);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routing; });
+
+
+
+
 
 
 
@@ -133,16 +150,29 @@ var routes = [
         path: "",
         redirectTo: "home",
         pathMatch: "full"
-    },
-    {
+    }, {
         path: "profile",
         component: __WEBPACK_IMPORTED_MODULE_1__components_profile_profile_component__["a" /* ProfileComponent */]
-    },
-    {
+    }, {
         path: "home",
         component: __WEBPACK_IMPORTED_MODULE_2__components_main_module_main_module_component__["a" /* MainModuleComponent */]
-    },
-    {
+    }, {
+        path: 'message',
+        component: __WEBPACK_IMPORTED_MODULE_4__components_message_module_message_module_component__["a" /* MessageModuleComponent */],
+        children: [{
+                path: "newmessage",
+                component: __WEBPACK_IMPORTED_MODULE_3__components_new_message_new_message_component__["a" /* NewMessageComponent */],
+                outlet: 'newmsg'
+            }, {
+                path: "messagelist",
+                component: __WEBPACK_IMPORTED_MODULE_5__components_message_list_message_list_component__["a" /* MessageListComponent */],
+                outlet: 'msglist'
+            }, {
+                path: "sidebar",
+                component: __WEBPACK_IMPORTED_MODULE_6__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
+                outlet: 'sidebar'
+            }]
+    }, {
         path: "**",
         redirectTo: "home"
     }
@@ -170,7 +200,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var FootbarComponent = (function () {
     function FootbarComponent() {
-        this.author = "Xiaojie Zha";
+        this.project = "BitTiger Capstone Project";
+        this.author = "Group3";
+        this.year = "2017";
     }
     FootbarComponent.prototype.ngOnInit = function () {
     };
@@ -428,7 +460,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, ".navbar-custom {\n  background-color:#656d74;\n  border-radius:0;\n}\n\n.navbar-nav > li > a {\n  padding-top:30px !important;\n  padding-bottom:30px !important;\n  font-size: 20px !important;\n}\n.navbar {\n  min-height: 80px !important\n}\n\n.navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {\n  background-color: transparent;\n}\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 1000;\n  min-width: 300px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  list-style: none;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, .15);\n  border-radius: 1px;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n}\n\n.logo-bittiger {\n  height: 32px;\n  margin-top: 10px;\n}\n\n\n", ""]);
+exports.push([module.i, ".navbar-custom {\n  background-color:#656d74;\n  border-radius:0;\n}\n\n.navbar-nav > li > a {\n  padding-top:30px !important;\n  padding-bottom:30px !important;\n  font-size: 20px !important;\n}\n.navbar {\n  min-height: 80px !important\n}\n\n.navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {\n  background-color: transparent;\n}\n\n.output-session {\n  padding: 5px 10px 10px 10px;\n  overflow: auto;\n  max-height: 20vh;\n}\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 1000;\n  min-width: 300px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  list-style: none;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, .15);\n  border-radius: 1px;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n}\n\n.logo-bittiger {\n  height: 32px;\n  margin-top: 10px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -466,7 +498,7 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n<a
 /***/ 177:
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\n  <nav class=\"navbar navbar-default navbar-fixed-bottom\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-lg-12\">\n          Copyright &copy; {{author}} 2017\n        </div>\n      </div>\n    </div>\n  </nav>\n</footer>\n"
+module.exports = "<footer>\n  <nav class=\"navbar navbar-default navbar-fixed-bottom\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-lg-12\">\n          {{project}} by {{author}} {{year}}\n        </div>\n      </div>\n    </div>\n  </nav>\n</footer>\n"
 
 /***/ }),
 
@@ -480,14 +512,14 @@ module.exports = "<div>\n  <form>\n    <div class=\"form-group\">\n      <label 
 /***/ 179:
 /***/ (function(module, exports) {
 
-module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n    <app-sidebar></app-sidebar>\n  </div>\n  <div class=\"col-sm-9\">\n    <app-new-message></app-new-message>\n  </div>\n</div>\n"
+module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n\n  </div>\n  <div class=\"col-sm-9\">\n\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 180:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse navbar-custom\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header navbar-custom\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">\n        <img class=\"logo-bittiger img-responsive\" alt=\"Brand\" src=\"//cdn-i2.tianmaying.com/public/homeV1/logo-tpye@3x.png\">\n      </a>\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse \" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> <span class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li>\n\n                <a routerLink=\"/profile\">My Profile</a>\n                <a class=\"text-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n              <!--<li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>-->\n\n            </li>\n          </ul>\n          <!--<ul class=\"dropdown-menu list-group\">-->\n            <!--<li class=\"list-group-item\">-->\n              <!--<span class=\"badge\">14</span>-->\n              <!--Cras justo odio-->\n            <!--</li>-->\n          <!--</ul>-->\n        </li>\n        <li>\n          <form class=\"navbar-form\">\n            <!--<button type=\"button\" class=\"btn btn-primary\" (click)=\"login()\" *ngIf=\"!(isAuthenticated())\">Sign in</button>-->\n          </form>\n        </li>\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}} <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a routerLink=\"/profile\">My Profile</a></li>\n            <li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-inverse navbar-custom\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header navbar-custom\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">\n        <img class=\"logo-bittiger img-responsive\" alt=\"Brand\" src=\"//cdn-i2.tianmaying.com/public/homeV1/logo-tpye@3x.png\">\n      </a>\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse \" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> <span class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li>\n              <div class=\"list-group div-margin-nav output-session\">\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS503停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS501停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS503停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS501停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS503停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS501停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS503停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n                <div>\n                  <a class=\"list-group-item\" routerLink=\"/message\">CS501停课通知</a>\n                  <a class=\"text-right pull-right\" routerLink=\"/home\" (click)=\"delete()\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>\n                </div>\n              </div>\n              <a routerLink=\"/message\">All Messages</a>\n              <!--<li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>-->\n\n            </li>\n          </ul>\n          <!--<ul class=\"dropdown-menu list-group\">-->\n            <!--<li class=\"list-group-item\">-->\n              <!--<span class=\"badge\">14</span>-->\n              <!--Cras justo odio-->\n            <!--</li>-->\n          <!--</ul>-->\n        </li>\n        <li>\n          <form class=\"navbar-form\">\n            <!--<button type=\"button\" class=\"btn btn-primary\" (click)=\"login()\" *ngIf=\"!(isAuthenticated())\">Sign in</button>-->\n          </form>\n        </li>\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{username}} <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a routerLink=\"/profile\">My Profile</a></li>\n            <li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
 
 /***/ }),
 
@@ -550,7 +582,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, ".sidebarList{\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.btn{\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -563,7 +595,7 @@ module.exports = module.exports.toString();
 /***/ 226:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"text-center\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> username</div>\n</div>\n\n<div>\n  <form class=\"navbar-form\">\n    <button type=\"button\" class=\"btn btn-large btn-success btn-block\" (click)=\"newMsg()\">New Mesage</button>\n  </form>\n</div>\n\n<div class=\"sidebarList\">\n  <ul class=\"nav nav-stacked\">\n    <li role=\"presentation\" class=\"active\"><a href=\"#\">Inbox</a></li>\n    <li role=\"presentation\"><a href=\"#\">Starred</a></li>\n    <li role=\"presentation\"><a href=\"#\">Sent</a></li>\n    <hr>\n    <li role=\"presentation\"><a href=\"#\">Inbox</a></li>\n    <li role=\"presentation\"><a href=\"#\">Starred</a></li>\n    <li role=\"presentation\"><a href=\"#\">Sent</a></li>\n  </ul>\n</div>\n"
+module.exports = ""
 
 /***/ }),
 
@@ -586,9 +618,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SAMPLE_OPTIONS = ["CS503", "UX501"];
 var NewMessageComponent = (function () {
     function NewMessageComponent() {
+        this.sendSuccess = false;
+        this.choseOption = "";
+        this.title = "";
         this.options = SAMPLE_OPTIONS;
     }
     NewMessageComponent.prototype.ngOnInit = function () {
+    };
+    NewMessageComponent.prototype.setTitle = function (tit) {
+        this.title = tit;
+    };
+    NewMessageComponent.prototype.setRecipient = function (rec) {
+        this.choseOption = rec;
     };
     return NewMessageComponent;
 }());
@@ -613,7 +654,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 45vh;\n  resize: none;\n}\n\n.main_container{\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n\n.no-border {\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */\n}\n", ""]);
+exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 45vh;\n  resize: none;\n}\n\n\n.main_container{\n  margin-top: 68px;\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n\n.no-border {\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */\n}\n", ""]);
 
 // exports
 
@@ -626,7 +667,195 @@ module.exports = module.exports.toString();
 /***/ 229:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <form #formRef=\"ngForm\">\n      <div class=\"row col-md-12 keywordInput\">\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin\">\n            <!--<label for=\"title\">Subject</label>-->\n            <input type=\"text\" class=\"form-control no-border\" id=\"title\"\n                   name=\"title\" placeholder=\"Subject...\" [(ngModel)]=\"title\" (ngModelChange)=\"keywordMark()\">\n          </div>\n          <div class = \"col-sm-4 col-md-4 form-inline\">\n            <label for=\"option\">Groups</label>\n            <select class=\"form-control\" id=\"option\"\n                    name=\"options\" [(ngModel)]=\"choseOption\" (ngModelChange)=\"selectGroup()\" [value]=\"options\" >\n              <option *ngFor=\"let opt of options\">\n                {{opt}}\n              </option>\n            </select>\n          </div>\n          <div class = \"col-md-offset-4 col-sm-2 col-md-2 form-inline\">\n            <form>\n              <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"sendMsg()\"> Send </button>\n            </form>\n          </div>\n          <div class = \"col-sm-2 col-md-2 form-inline\">\n            <form>\n              <button type=\"button\" class=\"btn btn-danger btn-block\" (click)=\"cancelMsg()\">Cancel</button>\n            </form>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n    </form>\n  </div>\n  <div class = \"col-md-12 div-margin\">\n    <div>\n      <textarea class=\"form-control input-session\" id=\"input-session\"\n                name=\"input-session\" placeholder=\"Input Message Here...\" [(ngModel)]=\"inputContent\"></textarea>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <form #formRef=\"ngForm\">\n      <div class=\"row col-md-12\">\n        <div class=\"alert alert-success\" *ngIf=\"sendSuccess\">\n            <strong>Success!</strong>\n        </div>\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin\">\n            <!--<label for=\"title\">Subject</label>-->\n            <input type=\"text\" class=\"form-control no-border\" id=\"title\"\n                   name=\"title\" placeholder=\"Subject...\" [(ngModel)]=\"title\">\n          </div>\n          <div class = \"col-sm-4 col-md-4 form-inline\">\n            <label for=\"option\">To: </label>\n            <select class=\"form-control\" id=\"option\"\n                    name=\"options\" [(ngModel)]=\"choseOption\" [value]=\"options\" >\n              <option *ngFor=\"let opt of options\">\n                {{opt}}\n              </option>\n            </select>\n          </div>\n          <div class=\"col-xs-12 col-sm-6 pull-right\">\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" (click)=\"sendMsg()\"> Send </a>\n            </div>\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Cancel</a>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n    </form>\n  </div>\n  <div class = \"col-md-12 div-margin\">\n    <div>\n      <textarea class=\"form-control input-session\" id=\"input-session\"\n                name=\"input-session\" placeholder=\"Input Message Here...\" [(ngModel)]=\"inputContent\"></textarea>\n    </div>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ 230:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageModuleComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MessageModuleComponent = (function () {
+    function MessageModuleComponent() {
+    }
+    MessageModuleComponent.prototype.ngOnInit = function () {
+    };
+    return MessageModuleComponent;
+}());
+MessageModuleComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-message-module',
+        template: __webpack_require__(232),
+        styles: [__webpack_require__(231)]
+    }),
+    __metadata("design:paramtypes", [])
+], MessageModuleComponent);
+
+//# sourceMappingURL=message-module.component.js.map
+
+/***/ }),
+
+/***/ 231:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+// imports
+
+
+// module
+exports.push([module.i, ".sidebarList{\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.btn{\n  width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 232:
+/***/ (function(module, exports) {
+
+module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n    <div>\n      <div class=\"text-center\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> username</div>\n    </div>\n\n    <div>\n      <form class=\"nav navbar-form\">\n        <button type=\"button\" class=\"btn btn-large btn-success btn-block\" data-toggle=\"tab\" href=\"#newmsg\">New Message</button>\n      </form>\n    </div>\n\n    <div class=\"sidebarList\">\n      <ul class=\"nav nav-pills nav-stacked\">\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\">Inbox <span class=\"badge\">42</span></a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#newmsg\">Starred</a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\">Sent</a></li>\n        <hr>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#\">CS501</a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#\">UX501</a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#\">BitTiger News</a></li>\n      </ul>\n    </div>\n  </div>\n\n  <div class=\"col-sm-9 tab-content\">\n    <div id=\"newmsg\" class=\"tab-pane fade\">\n      <app-new-message></app-new-message>\n    </div>\n    <div id=\"inbox\" class=\"tab-pane fade in active\">\n      <app-message-list></app-message-list>\n    </div>\n    <div id=\"detail\" class=\"tab-pane fade\">\n      <app-message-detail></app-message-detail>\n    </div>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ 233:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MessageListComponent = (function () {
+    function MessageListComponent() {
+    }
+    MessageListComponent.prototype.ngOnInit = function () {
+    };
+    return MessageListComponent;
+}());
+MessageListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-message-list',
+        template: __webpack_require__(235),
+        styles: [__webpack_require__(234)]
+    }),
+    __metadata("design:paramtypes", [])
+], MessageListComponent);
+
+//# sourceMappingURL=message-list.component.js.map
+
+/***/ }),
+
+/***/ 234:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+// imports
+
+
+// module
+exports.push([module.i, ".main_container{\n  /*margin-top: 80px;*/\n  /*display: block;*/\n  /*height: auto;*/\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  /*transition: border-color;*/\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 235:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <!--<div>-->\n    <!--<table class=\"table table-hover\">-->\n      <!--<tbody>-->\n        <!--<tr>-->\n          <!--<dt>UX501停课通知  <span class=\"label label-default\">New</span></dt>-->\n          <!--<dd>UX501小助手 2:31PM</dd>-->\n          <!--<dd>This is the message to say something.</dd>-->\n          <!--<dd>DELETE</dd>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<dt>UX501停课通知</dt>-->\n          <!--<dd>UX501小助手 2:31PM</dd>-->\n          <!--<dd>This is the message to say something.</dd>-->\n          <!--<dd>DELETE</dd>-->\n        <!--</tr>-->\n      <!--</tbody>-->\n    <!--</table>-->\n  <!--</div>-->\n  <div class=\"list-group div-margin main_container\">\n    <a class=\"list-group-item\" data-toggle=\"pill\" href=\"#detail\">\n      <h4 class=\"list-group-item-heading\">UX501停课通知 <span class=\"label label-default\">New</span> </h4>\n      <p class=\"list-group-item-text\">UX501小助手 2:31PM</p>\n      <p class=\"list-group-item-text\">This is the message to say something.</p>\n    </a>\n    <a class=\"list-group-item\" data-toggle=\"pill\" href=\"#detail\">\n      <h4 class=\"list-group-item-heading\">UX501停课通知 </h4>\n      <p class=\"list-group-item-text\">UX501小助手 2:30PM</p>\n      <p class=\"list-group-item-text\">This is the message to say something.</p>\n    </a>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 236:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageDetailComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MessageDetailComponent = (function () {
+    function MessageDetailComponent() {
+        this.title = "CS503停课通知";
+        this.username = "CS503小助手";
+        this.user = "CS503小助手";
+        this.time = "3:36 PM Yesterday";
+        this.content = "啊 同学们 今天不上课了哈 就酱";
+    }
+    MessageDetailComponent.prototype.ngOnInit = function () {
+    };
+    return MessageDetailComponent;
+}());
+MessageDetailComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-message-detail',
+        template: __webpack_require__(238),
+        styles: [__webpack_require__(237)]
+    }),
+    __metadata("design:paramtypes", [])
+], MessageDetailComponent);
+
+//# sourceMappingURL=message-detail.component.js.map
+
+/***/ }),
+
+/***/ 237:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+// imports
+
+
+// module
+exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 45vh;\n  resize: none;\n}\n\n.main_container{\n  margin-top: 50px;\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n.div-margin-title{\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\n\n.no-border {\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */\n}\n\n.font-grey{\n  color: lightgrey;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 238:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <form #formRef=\"ngForm\">\n      <div class=\"row col-md-12\">\n        <div class=\"alert alert-success\" *ngIf=\"sendSuccess\">\n          <strong>Success!</strong>\n        </div>\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin-title no-border\">\n            <!--<label for=\"title\">Subject</label>-->\n            <h3>{{title}}</h3>\n          </div>\n          <div class = \"col-sm-6 col-md-6 form-inline font-grey\">\n            <label>{{username}} {{time}}</label>\n          </div>\n          <div class=\"col-xs-12 col-sm-6 pull-right\">\n            <div class=\"col-xs-6 form-inline\">\n              <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" href=\"#newmsg\" (click)=\"newMsg()\"> Reply </a>\n            </div>\n            <div class=\"col-xs-6 form-inline\">\n              <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Back</a>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n    </form>\n  </div>\n  <div class = \"col-md-12 div-margin\">\n    <div>\n      <p>{{content}}</p>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 

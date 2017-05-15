@@ -15,6 +15,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
+import { MessageModuleComponent } from './components/message-module/message-module.component';
+import { MessageListComponent } from './components/message-list/message-list.component';
+import { MessageDetailComponent } from './components/message-detail/message-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { NewMessageComponent } from './components/new-message/new-message.compon
     ProfileComponent,
     LoginComponent,
     SidebarComponent,
-    NewMessageComponent
+    NewMessageComponent,
+    MessageModuleComponent,
+    MessageListComponent,
+    MessageDetailComponent
   ],
   imports: [
     BrowserModule,
