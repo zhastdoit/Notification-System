@@ -6,13 +6,18 @@ import { Http, Response, Headers } from '@angular/http';
 import { BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Injectable()
 export class DataService {
   username: Object;
   userProfile: Object;
+  messages: Message[];
+  selectedId: number = 0;
+
   private messagesSource = new BehaviorSubject<Message[]>([]);
+  subscriptionMessages: Subscription;
 
   constructor(private http: Http) {
     this.username = localStorage.getItem('username');
@@ -51,19 +56,24 @@ export class DataService {
     this.http.get(`messages/received/userId/${this.username}`)
       .toPromise()
       .then((res: Response) => {
-        console.log(res.json());
+        //console.log(res.json());
         this.messagesSource.next(res.json());
       })
       .catch(this.handleError);
-
     return this.messagesSource.asObservable();
   }
   //
-  // getProblem(id: number): Promise<Problem> {
-  //   return this.http.get(`api/v1/problems/${id}`)
-  //     .toPromise()
-  //     .then((res: Response) => res.json())
-  //     .catch(this.handleError);
+  // getMessage(): Message {
+  //   this.subscriptionMessages = this.getMessages()
+  //     .subscribe(messages => {
+  //       this.messages = messages;
+  //       for (let message of this.messages) {
+  //         if (message.id==this.selectedId)
+  //           console.log("getMessage in dataservice if"+this.messages);
+  //         return message;
+  //     }
+  //   });
+  //   return null;
   // }
   //
   // addProblem(problem: Problem): Promise<Problem> {

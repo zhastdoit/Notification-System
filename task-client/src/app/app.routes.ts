@@ -3,8 +3,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MainModuleComponent } from './components/main-module/main-module.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
 import { MessageModuleComponent } from './components/message-module/message-module.component';
-import { MessageListComponent } from './components/message-list/message-list.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MessageDetailComponent } from './components/message-detail/message-detail.component';
 
 const routes: Routes = [
   {
@@ -18,22 +17,12 @@ const routes: Routes = [
     path: "home",
     component: MainModuleComponent
   }, {
-    path: 'message',
-    component: MessageModuleComponent,
-    children: [{
-      path: "newmessage",
-      component: NewMessageComponent,
-      outlet: 'newmsg'
-    },{
-      path: "messagelist",
-      component: MessageListComponent,
-      outlet: 'msglist'
-    },{
-      path: "sidebar",
-      component: SidebarComponent,
-      outlet: 'sidebar'
-    }]
+    path: 'messages',
+    component: MessageModuleComponent
   }, {
+    path: 'messages/:id',
+    component: MessageDetailComponent
+  },{
     path: "**",
     redirectTo: "home"
   }

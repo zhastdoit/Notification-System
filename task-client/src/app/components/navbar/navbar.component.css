@@ -31,7 +31,7 @@
   position: absolute;
   top: 100%;
   z-index: 1000;
-  min-width: 300px;
+  min-width: 400px;
   padding: 5px 0;
   margin: 2px 0 0;
   font-size: 14px;
@@ -48,4 +48,6 @@
   margin-top: 10px;
 }
 
-
+/*.inline{*/
+  /*display: inline-block;*/
+/*}*/

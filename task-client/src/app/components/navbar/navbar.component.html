@@ -35,40 +35,12 @@
           <ul class="dropdown-menu">
             <li>
               <div class="list-group div-margin-nav output-session">
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS503停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS501停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS503停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS501停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS503停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS501停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS503停课通知</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-                <div>
-                  <a class="list-group-item" routerLink="/message">CS501停课通知</a>
+                <div *ngFor="let msg of messages">
+                  <a class="list-group-item" routerLink="/messages">{{msg.title}}</a>
                   <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                 </div>
               </div>
-              <a routerLink="/message">All Messages</a>
+              <a routerLink="/messages">All Messages</a>
               <!--<li><a href="#" (click)="logout()">Log Out</a></li>-->
             </li>
           </ul>

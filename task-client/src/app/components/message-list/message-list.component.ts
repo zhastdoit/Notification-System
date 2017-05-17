@@ -18,6 +18,11 @@ export class MessageListComponent implements OnInit {
     this.getMessages();
   }
 
+  getMessage(id: number): void{
+    this.data.selectedId = id;
+    console.log(this.data.selectedId);
+  }
+
   getMessages(): void {
     this.subscriptionMessages = this.data.getMessages()
       .subscribe(messages => this.messages = messages);

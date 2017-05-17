@@ -1,22 +1,52 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NewMessageComponent } from '../new-message/new-message.component';
+import { Component, OnInit, Inject, Input} from '@angular/core';
+import { Message } from '../../models/message.model';
+import { ActivatedRoute} from "@angular/router";
+import 'rxjs/add/operator/toPromise';
+import { Subscription } from 'rxjs/Subscription';
+
+const DEFAULT_MESSAGE: Message = Object.freeze({
+  id: 0,
+  title: "",
+  text: "",
+  sendTime: "",
+  tag: "",
+  createdById: "",
+  status: 0,
+  parentId: 0
+});
 
 @Component({
   selector: 'app-message-detail',
   templateUrl: './message-detail.component.html',
   styleUrls: ['./message-detail.component.css']
 })
+
 export class MessageDetailComponent implements OnInit {
-  title: string = "CS503停课通知";
-  username: string = "CS503小助手";
-  user: string = "CS503小助手"
-  time: string = "3:36 PM Yesterday";
-  content: string = "啊 同学们 今天不上课了哈 就酱";
+  message: Message = DEFAULT_MESSAGE;
+  subscriptionMessages: Subscription;
+
   constructor(
-    // private nmc: NewMessageComponent
+    private route: ActivatedRoute,
+    @Inject("data") private data
   ) { }
 
   ngOnInit() {
+    this.getMessage();
+    console.log(this.message);
+  }
+
+  getMessage(): void {
+    this.data.getMessages()
+      .subscribe(messages => {
+        for (let message of messages) {
+          console.log("message.id: "+message.id);
+          console.log("selectedid: "+this.data.selectedId);
+          if (message.id==this.data.selectedId){
+            this.message=message;
+            console.log("getMessage in dataservice if"+message);
+          }
+        }
+      });
   }
 
   // newmsg(){

@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LogInPairs } from '../../models/loginpair.model';
 import { UserInfo } from "../../models/userinfo.model";
+import { Message } from '../../models/message.model';
+import { Subscription } from 'rxjs/Subscription';
+
 const DEFAULT_LOGIN: LogInPairs = Object.freeze({
   email: "",
   password: ""
@@ -13,7 +16,9 @@ const DEFAULT_LOGIN: LogInPairs = Object.freeze({
 })
 export class NavbarComponent implements OnInit {
   username = "";
-  userinfo: UserInfo;
+  messages: Message[] = [];
+  subscriptionMessages: Subscription;
+
   loginPairs: LogInPairs = Object.assign({}, DEFAULT_LOGIN);
 
   constructor(@Inject('data') private data) { }
@@ -21,6 +26,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     if (this.data.authenticated()){
       this.username = this.data.username;
+      this.getMessages();
     }
   }
 
@@ -45,4 +51,8 @@ export class NavbarComponent implements OnInit {
     return this.data.authenticated();
   }
 
+  getMessages(): void {
+    this.subscriptionMessages = this.data.getMessages()
+      .subscribe(messages => this.messages = messages);
+  }
 }

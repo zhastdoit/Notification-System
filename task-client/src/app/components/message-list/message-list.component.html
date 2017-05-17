@@ -28,7 +28,7 @@
       <p class="list-group-item-text">UX501小助手 2:30PM</p>
       <p class="list-group-item-text">This is the message to say something.</p>
     </a>
-    <a class="list-group-item" *ngFor="let msg of messages">
+    <a class="list-group-item" *ngFor="let msg of messages" data-toggle="pill" href="#detail" (click)="getMessage(msg.id)">
       <h4 class="list-group-item-heading">{{msg.title}} <span class="label label-default" *ngIf="msg.status==1">New</span> </h4>
       <p class="list-group-item-text">{{msg.createdById}} {{msg.sendTime}} </p>
       <p class="list-group-item-text">{{msg.text}}</p>
