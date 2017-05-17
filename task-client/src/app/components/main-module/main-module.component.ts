@@ -24,13 +24,13 @@ export class MainModuleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.data.getSampleText()
-        .then(sampleText => {
-          this.inputContent = sampleText;
-          this.outputContent = sampleText;
-        });
-    });
+    // this.route.params.subscribe(params => {
+    //   this.data.getSampleText()
+    //     .then(sampleText => {
+    //       this.inputContent = sampleText;
+    //       this.outputContent = sampleText;
+    //     });
+    // });
   }
 
   /** Usage:

@@ -1,5 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-
+import { LogInPairs } from '../../models/loginpair.model';
+import { UserInfo } from "../../models/userinfo.model";
+const DEFAULT_LOGIN: LogInPairs = Object.freeze({
+  email: "",
+  password: ""
+});
 
 @Component({
   selector: 'app-navbar',
@@ -7,27 +12,37 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  title = 'Simple Keyword Highlight App';
   username = "";
-  constructor(@Inject('auth') private auth) { }
+  userinfo: UserInfo;
+  loginPairs: LogInPairs = Object.assign({}, DEFAULT_LOGIN);
+
+  constructor(@Inject('data') private data) { }
 
   ngOnInit() {
-    if (this.auth.authenticated()){
-      this.username = this.auth.userProfile.nickname;
+    if (this.data.authenticated()){
+      this.username = this.data.username;
     }
   }
 
   login(): void {
-    this.auth.login()
-      .then(profile => this.username = profile.nickname);
+    //console.log(this.loginPairs.email);
+    this.data.login(this.loginPairs)
+      .then(this.username = this.loginPairs.email)
+      .catch(error => console.log(error._body));
+    this.loginPairs = Object.assign({}, DEFAULT_LOGIN);
   }
 
+  // signup(): void{
+  //   console.log("signup button is clicked.");
+  // }
+
   logout(): void {
-    this.auth.logout();
+    this.username="";
+    this.data.logout();
   }
 
   isAuthenticated() {
-    return this.auth.authenticated();
+    return this.data.authenticated();
   }
 
 }

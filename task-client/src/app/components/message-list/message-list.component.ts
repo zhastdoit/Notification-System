@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Message } from '../../models/message.model';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-message-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageListComponent implements OnInit {
 
-  constructor() { }
+  messages: Message[] = [];
+  subscriptionMessages: Subscription;
+
+  constructor(@Inject('data') private data) { }
 
   ngOnInit() {
+    this.getMessages();
   }
 
+  getMessages(): void {
+    this.subscriptionMessages = this.data.getMessages()
+      .subscribe(messages => this.messages = messages);
+  }
 }

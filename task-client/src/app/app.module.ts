@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { MainModuleComponent } from './components/main-module/main-module.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FootbarComponent } from './components/footbar/footbar.component';
 import { DataService } from "./services/data.service";
-import { AuthService } from "./services/auth.service";
 import { RouterModule } from '@angular/router';
 import { routing } from "./app.routes";
 import { ProfileComponent } from './components/profile/profile.component';
@@ -35,15 +35,13 @@ import { MessageDetailComponent } from './components/message-detail/message-deta
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     routing,
     RouterModule
   ],
   providers: [{
-    provide: "auth",
-    useClass: AuthService
-  },{
     provide: "data",
     useClass: DataService
   }],
