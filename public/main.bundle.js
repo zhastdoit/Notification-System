@@ -380,16 +380,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 var SAMPLE_OPTIONS = ["CS503", "UX501"];
 var NewMessageComponent = (function () {
-    function NewMessageComponent() {
+    function NewMessageComponent(data) {
+        this.data = data;
         this.sendSuccess = false;
         this.choseOption = "";
         this.title = "";
         this.options = SAMPLE_OPTIONS;
     }
     NewMessageComponent.prototype.ngOnInit = function () {
+        if (this.data.authenticated())
+            console.log(this.data.userProfile);
+        this.options = this.data.userProfile.userGroup;
     };
     NewMessageComponent.prototype.setTitle = function (tit) {
         this.title = tit;
@@ -405,7 +412,8 @@ NewMessageComponent = __decorate([
         template: __webpack_require__(191),
         styles: [__webpack_require__(175)]
     }),
-    __metadata("design:paramtypes", [])
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Inject */])('data')),
+    __metadata("design:paramtypes", [Object])
 ], NewMessageComponent);
 
 //# sourceMappingURL=new-message.component.js.map
@@ -654,7 +662,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 45vh;\n  resize: none;\n}\n\n.main_container{\n  margin-top: 50px;\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n.div-margin-title{\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\n\n.no-border {\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */\n}\n\n.font-grey{\n  color: lightgrey;\n}\n", ""]);
+exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 45vh;\n  resize: none;\n}\n.main_container{\n  margin-top: 50px;\n  display: block;\n  height: auto;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  transition: border-color;\n}\n\n.div-margin{\n  margin-top: 25px;\n  margin-bottom: 25px;\n}\n.div-margin-title{\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\n\n.no-border {\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */\n}\n\n.font-grey{\n  color: lightgrey;\n}\n", ""]);
 
 // exports
 
@@ -803,7 +811,7 @@ module.exports = "<div class =\"container-fluid\">\n\n</div>\n"
 /***/ 187:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid main_container\" *ngIf=\"message\">\n  <div>\n    <form>\n      <div class=\"row col-md-12\">\n        <!--<div class=\"alert alert-success\" *ngIf=\"sendSuccess\">-->\n          <!--<strong>Success!</strong>-->\n        <!--</div>-->\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin-title no-border\">\n            <!--<label for=\"title\">Subject</label>-->\n            <h3>{{message.title}}</h3>\n          </div>\n          <div class = \"col-sm-6 col-md-6 form-inline font-grey\">\n            <label>{{message.createdById}} {{message.sendTime}}</label>\n          </div>\n          <div class=\"col-xs-12 col-sm-6 pull-right\">\n            <div class=\"col-xs-6 form-inline\">\n              <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" href=\"#newmsg\" (click)=\"newMsg()\"> Reply </a>\n            </div>\n            <div class=\"col-xs-6 form-inline\">\n              <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Back</a>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n    </form>\n  </div>\n  <div class = \"col-md-12 div-margin\">\n    <div>\n      <p>{{message.text}}</p>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div *ngFor=\"let message of messages\">\n  <div class=\"container-fluid main_container\" *ngIf=\"message.id==this.data.selectedId\">\n    <div>\n      <form>\n        <div class=\"row col-md-12\">\n          <!--<div class=\"alert alert-success\" *ngIf=\"sendSuccess\">-->\n            <!--<strong>Success!</strong>-->\n          <!--</div>-->\n          <div class=\"form-group\">\n            <div class = \"col-sm-12 col-md-12 div-margin-title no-border\">\n              <!--<label for=\"title\">Subject</label>-->\n              <h3>{{message.title}}</h3>\n            </div>\n            <div class = \"col-sm-6 col-md-6 form-inline font-grey\">\n              <label>{{message.createdById}} {{message.sendTime}}</label>\n            </div>\n            <div class=\"col-xs-12 col-sm-6 pull-right\">\n              <div class=\"col-xs-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" href=\"#newmsg\" (click)=\"newMsg()\"> Reply </a>\n              </div>\n              <div class=\"col-xs-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Back</a>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n      </form>\n    </div>\n    <div class = \"col-md-12 div-margin\">\n      <div>\n        <p>{{message.text}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -954,40 +962,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
-var DEFAULT_MESSAGE = Object.freeze({
-    id: 0,
-    title: "",
-    text: "",
-    sendTime: "",
-    tag: "",
-    createdById: "",
-    status: 0,
-    parentId: 0
-});
+// const DEFAULT_MESSAGE: Message = Object.freeze({
+//   id: 0,
+//   title: "",
+//   text: "",
+//   sendTime: "",
+//   tag: "",
+//   createdById: "",
+//   status: 0,
+//   parentId: 0
+// });
 var MessageDetailComponent = (function () {
     function MessageDetailComponent(route, data) {
         this.route = route;
         this.data = data;
-        this.message = DEFAULT_MESSAGE;
     }
     MessageDetailComponent.prototype.ngOnInit = function () {
-        this.getMessage();
-        console.log(this.message);
+        this.getMessages();
+        console.log(this.messages);
     };
-    MessageDetailComponent.prototype.getMessage = function () {
+    MessageDetailComponent.prototype.getMessages = function () {
         var _this = this;
-        this.data.getMessages()
-            .subscribe(function (messages) {
-            for (var _i = 0, messages_1 = messages; _i < messages_1.length; _i++) {
-                var message = messages_1[_i];
-                console.log("message.id: " + message.id);
-                console.log("selectedid: " + _this.data.selectedId);
-                if (message.id == _this.data.selectedId) {
-                    _this.message = message;
-                    console.log("getMessage in dataservice if" + message);
-                }
-            }
-        });
+        this.subscriptionMessages = this.data.getMessages()
+            .subscribe(function (messages) { return _this.messages = messages; });
     };
     return MessageDetailComponent;
 }());

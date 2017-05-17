@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 const SAMPLE_OPTIONS = ["CS503", "UX501"];
 
@@ -13,9 +13,12 @@ export class NewMessageComponent implements OnInit {
   public title: string ="";
   public options = SAMPLE_OPTIONS;
 
-  constructor() { }
+  constructor(@Inject('data') private data) { }
 
   ngOnInit() {
+    if(this.data.authenticated())
+      console.log(this.data.userProfile);
+      this.options=this.data.userProfile.userGroup;
   }
   setTitle(tit: string){
     this.title = tit;

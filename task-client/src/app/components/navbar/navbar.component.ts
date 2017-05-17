@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LogInPairs } from '../../models/loginpair.model';
-import { UserInfo } from "../../models/userinfo.model";
 import { Message } from '../../models/message.model';
 import { Subscription } from 'rxjs/Subscription';
 

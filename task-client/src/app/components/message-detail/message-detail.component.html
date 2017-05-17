@@ -1,35 +1,36 @@
-<div class="container-fluid main_container" *ngIf="message">
-  <div>
-    <form>
-      <div class="row col-md-12">
-        <!--<div class="alert alert-success" *ngIf="sendSuccess">-->
-          <!--<strong>Success!</strong>-->
-        <!--</div>-->
-        <div class="form-group">
-          <div class = "col-sm-12 col-md-12 div-margin-title no-border">
-            <!--<label for="title">Subject</label>-->
-            <h3>{{message.title}}</h3>
-          </div>
-          <div class = "col-sm-6 col-md-6 form-inline font-grey">
-            <label>{{message.createdById}} {{message.sendTime}}</label>
-          </div>
-          <div class="col-xs-12 col-sm-6 pull-right">
-            <div class="col-xs-6 form-inline">
-              <a type="button" class="btn btn-success btn-block" data-toggle="pill" href="#newmsg" (click)="newMsg()"> Reply </a>
+<div *ngFor="let message of messages">
+  <div class="container-fluid main_container" *ngIf="message.id==this.data.selectedId">
+    <div>
+      <form>
+        <div class="row col-md-12">
+          <!--<div class="alert alert-success" *ngIf="sendSuccess">-->
+            <!--<strong>Success!</strong>-->
+          <!--</div>-->
+          <div class="form-group">
+            <div class = "col-sm-12 col-md-12 div-margin-title no-border">
+              <!--<label for="title">Subject</label>-->
+              <h3>{{message.title}}</h3>
             </div>
-            <div class="col-xs-6 form-inline">
-              <a type="button" class="btn btn-danger btn-block" data-toggle="pill" href="#inbox">Back</a>
+            <div class = "col-sm-6 col-md-6 form-inline font-grey">
+              <label>{{message.createdById}} {{message.sendTime}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-6 pull-right">
+              <div class="col-xs-6 form-inline">
+                <a type="button" class="btn btn-success btn-block" data-toggle="pill" href="#newmsg" (click)="newMsg()"> Reply </a>
+              </div>
+              <div class="col-xs-6 form-inline">
+                <a type="button" class="btn btn-danger btn-block" data-toggle="pill" href="#inbox">Back</a>
+              </div>
             </div>
           </div>
         </div>
+        <!--<button type="submit" class="btn btn-default" (click)="searchKeyword()"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>-->
+      </form>
+    </div>
+    <div class = "col-md-12 div-margin">
+      <div>
+        <p>{{message.text}}</p>
       </div>
-      <!--<button type="submit" class="btn btn-default" (click)="searchKeyword()"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>-->
-    </form>
-  </div>
-  <div class = "col-md-12 div-margin">
-    <div>
-      <p>{{message.text}}</p>
     </div>
   </div>
-
 </div>

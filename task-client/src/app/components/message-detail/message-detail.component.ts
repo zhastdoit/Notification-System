@@ -4,16 +4,16 @@ import { ActivatedRoute} from "@angular/router";
 import 'rxjs/add/operator/toPromise';
 import { Subscription } from 'rxjs/Subscription';
 
-const DEFAULT_MESSAGE: Message = Object.freeze({
-  id: 0,
-  title: "",
-  text: "",
-  sendTime: "",
-  tag: "",
-  createdById: "",
-  status: 0,
-  parentId: 0
-});
+// const DEFAULT_MESSAGE: Message = Object.freeze({
+//   id: 0,
+//   title: "",
+//   text: "",
+//   sendTime: "",
+//   tag: "",
+//   createdById: "",
+//   status: 0,
+//   parentId: 0
+// });
 
 @Component({
   selector: 'app-message-detail',
@@ -22,7 +22,7 @@ const DEFAULT_MESSAGE: Message = Object.freeze({
 })
 
 export class MessageDetailComponent implements OnInit {
-  message: Message = DEFAULT_MESSAGE;
+  messages: Message[];
   subscriptionMessages: Subscription;
 
   constructor(
@@ -31,22 +31,14 @@ export class MessageDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMessage();
-    console.log(this.message);
+    this.getMessages();
+    console.log(this.messages);
   }
 
-  getMessage(): void {
-    this.data.getMessages()
-      .subscribe(messages => {
-        for (let message of messages) {
-          console.log("message.id: "+message.id);
-          console.log("selectedid: "+this.data.selectedId);
-          if (message.id==this.data.selectedId){
-            this.message=message;
-            console.log("getMessage in dataservice if"+message);
-          }
-        }
-      });
+
+  getMessages(): void {
+    this.subscriptionMessages = this.data.getMessages()
+      .subscribe(messages => this.messages = messages);
   }
 
   // newmsg(){
