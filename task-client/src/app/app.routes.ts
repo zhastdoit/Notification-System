@@ -19,9 +19,6 @@ const routes: Routes = [
   }, {
     path: 'messages',
     component: MessageModuleComponent
-  }, {
-    path: 'messages/:id',
-    component: MessageDetailComponent
   },{
     path: "**",
     redirectTo: "home"

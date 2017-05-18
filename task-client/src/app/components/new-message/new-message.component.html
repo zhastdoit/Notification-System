@@ -1,20 +1,19 @@
 <div class="container-fluid main_container">
   <div>
-    <form #formRef="ngForm">
+    <form #formRef="ngForm" *ngIf="setReply()">
       <div class="row col-md-12">
         <div class="alert alert-success" *ngIf="sendSuccess">
             <strong>Success!</strong>
         </div>
         <div class="form-group">
           <div class = "col-sm-12 col-md-12 div-margin">
-            <!--<label for="title">Subject</label>-->
-            <input type="text" class="form-control no-border" id="title"
-                   name="title" placeholder="Subject..." [(ngModel)]="title">
+            <input type="text" class="form-control no-border" id="title" required
+                   name="title" placeholder="Subject..." [(ngModel)]="newmsg.title">
           </div>
           <div class = "col-sm-4 col-md-4 form-inline">
             <label for="option">To: </label>
-            <select class="form-control" id="option"
-                    name="options" [(ngModel)]="choseOption" [value]="options" >
+            <select class="form-control" id="option" required
+                    name="options" [(ngModel)]="choseOption" [value]="options">
               <option *ngFor="let opt of options">
                 {{opt}}
               </option>
@@ -22,7 +21,7 @@
           </div>
           <div class="col-xs-12 col-sm-6 pull-right">
             <div class="col-sm-6 form-inline">
-                <a type="button" class="btn btn-success btn-block" data-toggle="pill" (click)="sendMsg()"> Send </a>
+                <a type="button" class="btn btn-success btn-block" data-toggle="pill" (click)="sendMessage()"> Send </a>
             </div>
             <div class="col-sm-6 form-inline">
                 <a type="button" class="btn btn-danger btn-block" data-toggle="pill" href="#inbox">Cancel</a>
@@ -31,13 +30,11 @@
         </div>
       </div>
       <!--<button type="submit" class="btn btn-default" (click)="searchKeyword()"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>-->
+     <div class = "col-md-12 div-margin">
+      <textarea class="form-control input-session" id="input-session" required
+                name="input-session" placeholder="Input Message Here..." [(ngModel)]="newmsg.text"></textarea>
+      </div>
     </form>
-  </div>
-  <div class = "col-md-12 div-margin">
-    <div>
-      <textarea class="form-control input-session" id="input-session"
-                name="input-session" placeholder="Input Message Here..." [(ngModel)]="inputContent"></textarea>
-    </div>
   </div>
 
 </div>

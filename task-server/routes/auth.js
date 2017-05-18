@@ -42,7 +42,8 @@ router.post('/login', function(req, res, next) {
                     getUserGroupContacts(email).then((results) => {
                         for(var i in results) {
                             var contact = {}
-                            contact[results[i].name] = results[i].adminEmail;
+                            contact['name'] = results[i].name;
+                            contact['email'] = results[i].adminEmail;
                             userGroupContacts.push(contact);
                         }
                         res.status(200).json({

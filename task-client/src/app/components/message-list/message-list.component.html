@@ -1,37 +1,15 @@
 <div class="container-fluid">
-  <!--<div>-->
-    <!--<table class="table table-hover">-->
-      <!--<tbody>-->
-        <!--<tr>-->
-          <!--<dt>UX501停课通知  <span class="label label-default">New</span></dt>-->
-          <!--<dd>UX501小助手 2:31PM</dd>-->
-          <!--<dd>This is the message to say something.</dd>-->
-          <!--<dd>DELETE</dd>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<dt>UX501停课通知</dt>-->
-          <!--<dd>UX501小助手 2:31PM</dd>-->
-          <!--<dd>This is the message to say something.</dd>-->
-          <!--<dd>DELETE</dd>-->
-        <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-  <!--</div>-->
-  <div class="list-group div-margin main_container">
-    <a class="list-group-item" data-toggle="pill" href="#detail">
-      <h4 class="list-group-item-heading">UX501停课通知 <span class="label label-default">New</span> </h4>
-      <p class="list-group-item-text">UX501小助手 2:31PM</p>
-      <p class="list-group-item-text">This is the message to say something.</p>
-    </a>
-    <a class="list-group-item" data-toggle="pill" href="#detail">
-      <h4 class="list-group-item-heading">UX501停课通知 </h4>
-      <p class="list-group-item-text">UX501小助手 2:30PM</p>
-      <p class="list-group-item-text">This is the message to say something.</p>
-    </a>
-    <a class="list-group-item" *ngFor="let msg of messages" data-toggle="pill" href="#detail" (click)="getMessage(msg.id)">
-      <h4 class="list-group-item-heading">{{msg.title}} <span class="label label-default" *ngIf="msg.status==1">New</span> </h4>
-      <p class="list-group-item-text">{{msg.createdById}} {{msg.sendTime}} </p>
-      <p class="list-group-item-text">{{msg.text}}</p>
-    </a>
+  <div class="list-group div-margin main_container" >
+    <ng-container *ngFor="let msg of messages">
+      <a class="list-group-item" *ngIf="(msg.tag==this.data.selectedTag||this.data.selectedTag=='')&&(msg.status!=3)"  data-toggle="pill" href="#detail" (click)="getMessage(msg.id)">
+        <h4 class="list-group-item-heading">{{msg.title}}
+          <span class="label label-info"*ngIf="msg.tag!=''">{{msg.tag}}</span>
+          <span class="label label-default" *ngIf="msg.status==1">New</span>
+          <span class="glyphicon glyphicon-star yellow" aria-hidden="true" *ngIf="msg.status==4"></span>
+        </h4>
+        <p class="list-group-item-text">{{msg.createdById}} {{msg.sendTime}} </p>
+        <p class="list-group-item-text">{{msg.text}}</p>
+      </a>
+    </ng-container>
   </div>
 </div>

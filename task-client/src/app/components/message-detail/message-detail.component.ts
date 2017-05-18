@@ -32,17 +32,32 @@ export class MessageDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getMessages();
-    console.log(this.messages);
   }
-
 
   getMessages(): void {
     this.subscriptionMessages = this.data.getMessages()
       .subscribe(messages => this.messages = messages);
   }
 
-  // newmsg(){
-  //   this.nmc.setTitle("Re: ");
-  //   this.nmc.setRecipient(this.user);
-  // }
+  replyMessage(){
+    for (let message of this.messages) {
+      if (message.id == this.data.selectedId)
+      {
+        this.data.isReply=true;
+        this.data.replyTitle = "Re: " + message.title;
+        this.data.replyUser = message.createdById;
+        this.data.replyText = "\n----------------------\n"
+                              +"The following message was sent by: "+message.createdById + "\n"
+                              +"At: "+message.sendTime+"\n"
+                              +"Content: \n"+message.text;
+      }
+    }
+  }
+  markMsg(){
+    this.data.starMsg();
+  }
+  deleteMsg(){
+    this.data.deleteMsg();
+  }
+
 }

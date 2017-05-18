@@ -1,25 +1,24 @@
 <div class ="container-fluid">
   <div class="col-sm-3">
     <div>
-      <div class="text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> username</div>
+      <div class="text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{this.data.username}}</div>
     </div>
 
     <div>
       <form class="nav navbar-form">
-        <button type="button" class="btn btn-large btn-success btn-block" data-toggle="tab" href="#newmsg">New Message</button>
+        <button type="button" class="btn btn-large btn-success btn-block" data-toggle="tab" href="#newmsg" (click)="newmsg()">New Message</button>
       </form>
     </div>
 
     <div class="sidebarList">
       <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a data-toggle="pill" href="#inbox">Inbox <span class="badge">{{unreadNumber}}</span></a></li>
+        <li role="presentation"><a data-toggle="pill" href="#inbox" (click)="showTag('')">Inbox <span class="badge">{{unreadNumber}}</span></a></li>
         <li role="presentation"><a data-toggle="pill" href="#newmsg">Starred</a></li>
         <li role="presentation"><a data-toggle="pill" href="#inbox">Sent</a></li>
         <hr>
-        <li role="presentation"><a data-toggle="pill" href="#">CS501</a></li>
-        <li role="presentation"><a data-toggle="pill" href="#">UX501</a></li>
-        <li role="presentation"><a data-toggle="pill" href="#">BitTiger News</a></li>
-      </ul>
+        <li role="presentation" *ngFor="let tag of tags">
+          <a data-toggle="pill" href="#inbox" (click)="showTag(tag)">{{tag}}</a></li>
+        </ul>
     </div>
   </div>
 

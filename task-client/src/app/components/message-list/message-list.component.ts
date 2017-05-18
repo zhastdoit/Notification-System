@@ -19,8 +19,13 @@ export class MessageListComponent implements OnInit {
   }
 
   getMessage(id: number): void{
-    this.data.selectedId = id;
-    console.log(this.data.selectedId);
+    this.data.selectedId=id;
+    for (let msg of this.messages)
+    {
+      if (msg.id==id)
+        this.data.message=msg;
+    }
+    this.data.readMsg();
   }
 
   getMessages(): void {

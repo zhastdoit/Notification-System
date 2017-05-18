@@ -34,10 +34,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span style="font-size: 20px" class="glyphicon glyphicon-bell" aria-hidden="true"></span> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li>
-              <div class="list-group div-margin-nav output-session">
+              <div class="list-group div-margin-nav output-session" *ngIf="messages">
                 <div *ngFor="let msg of messages">
-                  <a class="list-group-item" routerLink="/messages">{{msg.title}}</a>
-                  <a class="text-right pull-right" routerLink="/home" (click)="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                  <ng-container *ngIf="msg.status!=3">
+                    <a class="list-group-item" routerLink="/messages" href="#detail" (click)="getMessage(msg.id)">{{msg.title}}</a>
+                  </ng-container>
                 </div>
               </div>
               <a routerLink="/messages">All Messages</a>
@@ -47,7 +48,7 @@
         </li>
 
         <li class="dropdown" *ngIf="isAuthenticated()">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" *ngIf="username">{{username}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <!--<li><a routerLink="/profile">My Profile</a></li>-->
             <li><a href="#" (click)="logout()">Log Out</a></li>

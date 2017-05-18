@@ -12,8 +12,6 @@ import { DataService } from "./services/data.service";
 import { RouterModule } from '@angular/router';
 import { routing } from "./app.routes";
 import { ProfileComponent } from './components/profile/profile.component';
-import { LoginComponent } from './components/login/login.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
 import { MessageModuleComponent } from './components/message-module/message-module.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
@@ -26,8 +24,6 @@ import { MessageDetailComponent } from './components/message-detail/message-deta
     NavbarComponent,
     FootbarComponent,
     ProfileComponent,
-    LoginComponent,
-    SidebarComponent,
     NewMessageComponent,
     MessageModuleComponent,
     MessageListComponent,

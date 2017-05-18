@@ -37,10 +37,6 @@ export class NavbarComponent implements OnInit {
     this.loginPairs = Object.assign({}, DEFAULT_LOGIN);
   }
 
-  // signup(): void{
-  //   console.log("signup button is clicked.");
-  // }
-
   logout(): void {
     this.username="";
     this.data.logout();
@@ -53,5 +49,14 @@ export class NavbarComponent implements OnInit {
   getMessages(): void {
     this.subscriptionMessages = this.data.getMessages()
       .subscribe(messages => this.messages = messages);
+  }
+  getMessage(id: number): void{
+    this.data.selectedId=id;
+    for (let msg of this.messages)
+    {
+      if (msg.id==id)
+        this.data.message=msg;
+    }
+    this.data.readMsg();
   }
 }
