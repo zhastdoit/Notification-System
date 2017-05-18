@@ -57,6 +57,11 @@ export class DataService {
     }
   }
 
+  isAdmin(): boolean{
+    if (this.authenticated()==true)
+      return this.userProfile.admin=="1";
+  }
+
   logout(){
     localStorage.removeItem('username');
     localStorage.removeItem('profile');

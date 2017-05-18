@@ -459,14 +459,7 @@ var NewMessageComponent = (function () {
     NewMessageComponent.prototype.setReply = function () {
         if (this.data.replyTitle != "" && this.data.isReply == true) {
             this.newmsg.title = this.data.replyTitle;
-            var contacts = this.data.userProfile.userGroupContacts;
-            for (var i = 0; i < contacts.length; i++) {
-                // look for the entry with a matching `contacts` value
-                if (contacts[i].email == this.data.replyUser) {
-                    this.choseOption = contacts[i].name;
-                }
-            }
-            ;
+            this.setReplyTo();
             this.newmsg.text = this.data.replyText;
             this.setOptions();
             this.data.isReply = false;
@@ -479,18 +472,48 @@ var NewMessageComponent = (function () {
         // }
         return true;
     };
+    NewMessageComponent.prototype.setReplyTo = function () {
+        // Deal with 2 types of user: student and admin
+        if (this.data.isAdmin() == false) {
+            var contacts = this.data.userProfile.userGroupContacts;
+            for (var i = 0; i < contacts.length; i++) {
+                // look for the entry with a matching `contacts` value
+                if (contacts[i].email == this.data.replyUser) {
+                    this.choseOption = contacts[i].name;
+                }
+            }
+        }
+        else {
+            this.choseOption = this.data.replyUser;
+        }
+    };
     NewMessageComponent.prototype.setOptions = function () {
-        if (this.data.authenticated())
+        if (this.data.authenticated()) {
+            if (this.data.isAdmin()) {
+                var group = [this.data.userProfile.adminGroup];
+                this.options = group.concat(this.data.userProfile.adminGroupMembers);
+                console.log(this.options);
+            }
+        }
+        else
             this.options = this.data.userProfile.userGroup;
     };
     NewMessageComponent.prototype.sendMessage = function () {
         this.newmsg.parentId = "";
         this.newmsg.tag = this.choseOption;
-        var contacts = this.data.userProfile.userGroupContacts;
-        for (var i = 0; i < contacts.length; i++) {
-            // look for the entry with a matching `contacts` value
-            if (contacts[i].name == this.choseOption) {
-                this.newmsg.recId = [contacts[i].email];
+        if (this.data.isAdmin()) {
+            if (this.choseOption == this.data.userProfile.adminGroup)
+                this.newmsg.recId = this.data.userProfile.adminGroupMembers;
+            else
+                this.newmsg.recId = [this.choseOption];
+        }
+        else {
+            var contacts = this.data.userProfile.userGroupContacts;
+            for (var i = 0; i < contacts.length; i++) {
+                // look for the entry with a matching `contacts` value
+                if (contacts[i].name == this.choseOption) {
+                    this.newmsg.recId = [contacts[i].email];
+                }
             }
         }
         this.data.sendMessage(this.newmsg);
@@ -575,6 +598,10 @@ var DataService = (function () {
         else {
             return false;
         }
+    };
+    DataService.prototype.isAdmin = function () {
+        if (this.authenticated() == true)
+            return this.userProfile.admin == "1";
     };
     DataService.prototype.logout = function () {
         localStorage.removeItem('username');
@@ -863,7 +890,7 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n<a
 /***/ 181:
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\n  <nav class=\"navbar navbar-default navbar-fixed-bottom\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-lg-12\">\n          {{project}} by {{author}} {{year}}\n        </div>\n      </div>\n    </div>\n  </nav>\n</footer>\n"
+module.exports = "<footer>\n  <nav class=\"navbar navbar-default navbar-fixed-bottom\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-lg-12\">\n          {{project}} by {{author}} {{year}}\n        </div>\n      </div>\n    </div>\n  </nav>\n</footer>\n"
 
 /***/ }),
 
@@ -905,7 +932,7 @@ module.exports = "<nav class=\"navbar navbar-inverse navbar-custom\">\n  <div cl
 /***/ 187:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <form #formRef=\"ngForm\" *ngIf=\"setReply()\">\n      <div class=\"row col-md-12\">\n        <div class=\"alert alert-success\" *ngIf=\"sendSuccess\">\n            <strong>Success!</strong>\n        </div>\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin\">\n            <input type=\"text\" class=\"form-control no-border\" id=\"title\" required\n                   name=\"title\" placeholder=\"Subject...\" [(ngModel)]=\"newmsg.title\">\n          </div>\n          <div class = \"col-sm-4 col-md-4 form-inline\">\n            <label for=\"option\">To: </label>\n            <select class=\"form-control\" id=\"option\" required\n                    name=\"options\" [(ngModel)]=\"choseOption\" [value]=\"options\">\n              <option *ngFor=\"let opt of options\">\n                {{opt}}\n              </option>\n            </select>\n          </div>\n          <div class=\"col-xs-12 col-sm-6 pull-right\">\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" (click)=\"sendMessage()\"> Send </a>\n            </div>\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Cancel</a>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n     <div class = \"col-md-12 div-margin\">\n      <textarea class=\"form-control input-session\" id=\"input-session\" required\n                name=\"input-session\" placeholder=\"Input Message Here...\" [(ngModel)]=\"newmsg.text\"></textarea>\n      </div>\n    </form>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <form #formRef=\"ngForm\" *ngIf=\"setReply()\">\n      <div class=\"row col-md-12\">\n        <div class=\"alert alert-success\" *ngIf=\"sendSuccess\">\n            <strong>Success!</strong>\n        </div>\n        <div class=\"form-group\">\n          <div class = \"col-sm-12 col-md-12 div-margin\">\n            <input type=\"text\" class=\"form-control no-border\" id=\"title\" required\n                   name=\"title\" placeholder=\"Subject...\" [(ngModel)]=\"newmsg.title\">\n          </div>\n          <div class = \"col-sm-4 col-md-4 form-inline\">\n            <label for=\"option\">To: </label>\n            <select class=\"form-control\" id=\"option\" required\n                    name=\"options\" [(ngModel)]=\"choseOption\" [value]=\"options\">\n              <option *ngFor=\"let opt of options\">\n                {{opt}}\n              </option>\n            </select>\n          </div>\n          <div class=\"col-xs-12 col-sm-6 pull-right\">\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-success btn-block\" data-toggle=\"pill\" (click)=\"sendMessage()\"  href=\"#inbox\"> Send </a>\n            </div>\n            <div class=\"col-sm-6 form-inline\">\n                <a type=\"button\" class=\"btn btn-danger btn-block\" data-toggle=\"pill\" href=\"#inbox\">Cancel</a>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--<button type=\"submit\" class=\"btn btn-default\" (click)=\"searchKeyword()\"> <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span> Search</button>-->\n     <div class = \"col-md-12 div-margin\">\n      <textarea class=\"form-control input-session\" id=\"input-session\" required\n                name=\"input-session\" placeholder=\"Input Message Here...\" [(ngModel)]=\"newmsg.text\"></textarea>\n      </div>\n    </form>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
