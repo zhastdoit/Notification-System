@@ -23,6 +23,7 @@ export class DataService {
   messages: Message[];
   selectedId: number = 0;
   selectedTag: string = "";
+  selectedStatus: number = 1;
   replyTitle: string = "";
   replyUser: string = "";
   replyText: string = "";

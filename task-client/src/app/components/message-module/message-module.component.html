@@ -12,9 +12,9 @@
 
     <div class="sidebarList">
       <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a data-toggle="pill" href="#inbox" (click)="showTag('')">Inbox <span class="badge">{{unreadNumber}}</span></a></li>
-        <li role="presentation"><a data-toggle="pill" href="#newmsg">Starred</a></li>
-        <li role="presentation"><a data-toggle="pill" href="#inbox">Sent</a></li>
+        <li role="presentation"><a data-toggle="pill" href="#inbox" (click)="showTag('')">Inbox <span class="badge" *ngIf="unreadNumber!=0">{{unreadNumber}}</span></a></li>
+        <li role="presentation"><a data-toggle="pill" href="#inbox" (click)="showStar()">Starred</a></li>
+        <li role="presentation"><a data-toggle="pill" href="#inbox" (click)="showDelete()">Deleted</a></li>
         <hr>
         <li role="presentation" *ngFor="let tag of tags">
           <a data-toggle="pill" href="#inbox" (click)="showTag(tag)">{{tag}}</a></li>

@@ -2,45 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fb68f24-43a1-4228-ac82-b4a8addc6b86" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/login/login.component.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/login/login.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/login/login.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/sidebar/sidebar.component.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/sidebar/sidebar.component.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/sidebar/sidebar.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/components/sidebar/sidebar.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/services/auth.service.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/task-client/src/app/services/auth.service.ts" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/task-client/src/app/components/login/login.component.css" afterPath="$PROJECT_DIR$/task-client/src/app/models/newmessage.model.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/inline.bundle.js.map" afterPath="$PROJECT_DIR$/public/inline.bundle.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/main.bundle.js" afterPath="$PROJECT_DIR$/public/main.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/main.bundle.js.map" afterPath="$PROJECT_DIR$/public/main.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/polyfills.bundle.js" afterPath="$PROJECT_DIR$/public/polyfills.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/polyfills.bundle.js.map" afterPath="$PROJECT_DIR$/public/polyfills.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/scripts.bundle.js" afterPath="$PROJECT_DIR$/public/scripts.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/scripts.bundle.js.map" afterPath="$PROJECT_DIR$/public/scripts.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/styles.bundle.js" afterPath="$PROJECT_DIR$/public/styles.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/styles.bundle.js.map" afterPath="$PROJECT_DIR$/public/styles.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor.bundle.js" afterPath="$PROJECT_DIR$/public/vendor.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor.bundle.js.map" afterPath="$PROJECT_DIR$/public/vendor.bundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/app.module.ts" afterPath="$PROJECT_DIR$/task-client/src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/app.routes.ts" afterPath="$PROJECT_DIR$/task-client/src/app/app.routes.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/main-module/main-module.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/main-module/main-module.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.css" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.html" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.css" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.html" afterPath="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.html" afterPath="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts" afterPath="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-client/src/app/services/data.service.ts" afterPath="$PROJECT_DIR$/task-client/src/app/services/data.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-server/routes/auth.js" afterPath="$PROJECT_DIR$/task-server/routes/auth.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,8 +36,8 @@
       <file leaf-file-name="message-module.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            <state relative-caret-position="392">
+              <caret line="51" column="3" lean-forward="true" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -90,8 +58,8 @@
       <file leaf-file-name="data.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task-client/src/app/services/data.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+            <state relative-caret-position="326">
+              <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -109,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message-list.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="message-list.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="3" column="153" lean-forward="false" selection-start-line="3" selection-start-column="153" selection-end-line="3" selection-end-column="181" />
+              <caret line="3" column="183" lean-forward="false" selection-start-line="3" selection-start-column="183" selection-end-line="3" selection-end-column="183" />
               <folding />
             </state>
           </provider>
@@ -122,14 +90,14 @@
       <file leaf-file-name="message-module.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            <state relative-caret-position="360">
+              <caret line="15" column="105" lean-forward="true" selection-start-line="15" selection-start-column="105" selection-end-line="15" selection-end-column="105" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new-message.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new-message.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="447">
@@ -219,20 +187,20 @@
         <option value="$PROJECT_DIR$/task-client/src/app/components/main-module/main-module.component.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.css" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.ts" />
-        <option value="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.css" />
         <option value="$PROJECT_DIR$/task-client/src/app/app.routes.ts" />
         <option value="$PROJECT_DIR$/task-server/routes/auth.js" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.html" />
         <option value="$PROJECT_DIR$/task-client/src/app/models/newmessage.model.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.html" />
-        <option value="$PROJECT_DIR$/task-client/src/app/services/data.service.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.html" />
-        <option value="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html" />
-        <option value="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts" />
         <option value="$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts" />
+        <option value="$PROJECT_DIR$/task-client/src/app/services/data.service.ts" />
+        <option value="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts" />
+        <option value="$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html" />
+        <option value="$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html" />
       </list>
     </option>
   </component>
@@ -772,12 +740,12 @@
       <option name="presentableId" value="Default" />
       <updated>1494551796736</updated>
       <workItem from="1494551800524" duration="50767000" />
-      <workItem from="1494887208536" duration="71624000" />
+      <workItem from="1494887208536" duration="72584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122391000" />
+    <option name="totallyTimeSpent" value="123351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1243" height="777" extended-state="6" />
@@ -1198,16 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task-client/src/app/services/data.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-detail/message-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -1222,14 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="34" column="94" lean-forward="false" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="153" lean-forward="false" selection-start-line="3" selection-start-column="153" selection-end-line="3" selection-end-column="181" />
           <folding />
         </state>
       </provider>
@@ -1250,6 +1200,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/task-client/src/app/components/navbar/navbar.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1258,26 +1216,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html">
+    <entry file="file://$PROJECT_DIR$/task-client/src/app/services/data.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="326">
+          <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+        <state relative-caret-position="392">
+          <caret line="51" column="3" lean-forward="true" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/new-message/new-message.component.ts">
+    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-module/message-module.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+        <state relative-caret-position="360">
+          <caret line="15" column="105" lean-forward="true" selection-start-line="15" selection-start-column="105" selection-end-line="15" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task-client/src/app/components/message-list/message-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="183" lean-forward="false" selection-start-line="3" selection-start-column="183" selection-end-line="3" selection-end-column="183" />
           <folding />
         </state>
       </provider>

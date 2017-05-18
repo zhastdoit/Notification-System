@@ -548,6 +548,7 @@ var DataService = (function () {
         this.userProfile = DEFAULT_PROFILE;
         this.selectedId = 0;
         this.selectedTag = "";
+        this.selectedStatus = 1;
         this.replyTitle = "";
         this.replyUser = "";
         this.replyText = "";
@@ -883,14 +884,14 @@ module.exports = "<div *ngFor=\"let message of messages\">\n  <div class=\"conta
 /***/ 184:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"list-group div-margin main_container\" >\n    <ng-container *ngFor=\"let msg of messages\">\n      <a class=\"list-group-item\" *ngIf=\"(msg.tag==this.data.selectedTag||this.data.selectedTag=='')&&(msg.status!=3)\"  data-toggle=\"pill\" href=\"#detail\" (click)=\"getMessage(msg.id)\">\n        <h4 class=\"list-group-item-heading\">{{msg.title}}\n          <span class=\"label label-info\"*ngIf=\"msg.tag!=''\">{{msg.tag}}</span>\n          <span class=\"label label-default\" *ngIf=\"msg.status==1\">New</span>\n          <span class=\"glyphicon glyphicon-star yellow\" aria-hidden=\"true\" *ngIf=\"msg.status==4\"></span>\n        </h4>\n        <p class=\"list-group-item-text\">{{msg.createdById}} {{msg.sendTime}} </p>\n        <p class=\"list-group-item-text\">{{msg.text}}</p>\n      </a>\n    </ng-container>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"list-group div-margin main_container\" >\n    <ng-container *ngFor=\"let msg of messages\">\n      <a class=\"list-group-item\" *ngIf=\"(msg.tag==this.data.selectedTag||this.data.selectedTag=='')&&(msg.status==this.data.selectedStatus||(this.data.selectedStatus==1&&msg.status!=3))\"  data-toggle=\"pill\" href=\"#detail\" (click)=\"getMessage(msg.id)\">\n        <h4 class=\"list-group-item-heading\">{{msg.title}}\n          <span class=\"label label-info\"*ngIf=\"msg.tag!=''\">{{msg.tag}}</span>\n          <span class=\"label label-default\" *ngIf=\"msg.status==1\">New</span>\n          <span class=\"glyphicon glyphicon-star yellow\" aria-hidden=\"true\" *ngIf=\"msg.status==4\"></span>\n        </h4>\n        <p class=\"list-group-item-text\">{{msg.createdById}} {{msg.sendTime}} </p>\n        <p class=\"list-group-item-text\">{{msg.text}}</p>\n      </a>\n    </ng-container>\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 185:
 /***/ (function(module, exports) {
 
-module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n    <div>\n      <div class=\"text-center\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> {{this.data.username}}</div>\n    </div>\n\n    <div>\n      <form class=\"nav navbar-form\">\n        <button type=\"button\" class=\"btn btn-large btn-success btn-block\" data-toggle=\"tab\" href=\"#newmsg\" (click)=\"newmsg()\">New Message</button>\n      </form>\n    </div>\n\n    <div class=\"sidebarList\">\n      <ul class=\"nav nav-pills nav-stacked\">\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showTag('')\">Inbox <span class=\"badge\">{{unreadNumber}}</span></a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#newmsg\">Starred</a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\">Sent</a></li>\n        <hr>\n        <li role=\"presentation\" *ngFor=\"let tag of tags\">\n          <a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showTag(tag)\">{{tag}}</a></li>\n        </ul>\n    </div>\n  </div>\n\n  <div class=\"col-sm-9 tab-content\">\n    <div id=\"newmsg\" class=\"tab-pane fade\">\n      <app-new-message></app-new-message>\n    </div>\n    <div id=\"inbox\" class=\"tab-pane fade in active\">\n      <app-message-list></app-message-list>\n    </div>\n    <div id=\"detail\" class=\"tab-pane fade\">\n      <app-message-detail></app-message-detail>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n    <div>\n      <div class=\"text-center\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> {{this.data.username}}</div>\n    </div>\n\n    <div>\n      <form class=\"nav navbar-form\">\n        <button type=\"button\" class=\"btn btn-large btn-success btn-block\" data-toggle=\"tab\" href=\"#newmsg\" (click)=\"newmsg()\">New Message</button>\n      </form>\n    </div>\n\n    <div class=\"sidebarList\">\n      <ul class=\"nav nav-pills nav-stacked\">\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showTag('')\">Inbox <span class=\"badge\" *ngIf=\"unreadNumber!=0\">{{unreadNumber}}</span></a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showStar()\">Starred</a></li>\n        <li role=\"presentation\"><a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showDelete()\">Deleted</a></li>\n        <hr>\n        <li role=\"presentation\" *ngFor=\"let tag of tags\">\n          <a data-toggle=\"pill\" href=\"#inbox\" (click)=\"showTag(tag)\">{{tag}}</a></li>\n        </ul>\n    </div>\n  </div>\n\n  <div class=\"col-sm-9 tab-content\">\n    <div id=\"newmsg\" class=\"tab-pane fade\">\n      <app-new-message></app-new-message>\n    </div>\n    <div id=\"inbox\" class=\"tab-pane fade in active\">\n      <app-message-list></app-message-list>\n    </div>\n    <div id=\"detail\" class=\"tab-pane fade\">\n      <app-message-detail></app-message-detail>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -1022,6 +1023,13 @@ var MessageModuleComponent = (function () {
     };
     MessageModuleComponent.prototype.showTag = function (tag) {
         this.data.selectedTag = tag;
+        this.data.selectedStatus = 1;
+    };
+    MessageModuleComponent.prototype.showStar = function () {
+        this.data.selectedStatus = 4; //stared
+    };
+    MessageModuleComponent.prototype.showDelete = function () {
+        this.data.selectedStatus = 3; //deleted
     };
     MessageModuleComponent.prototype.newmsg = function () {
         this.data.replyTitle = "";

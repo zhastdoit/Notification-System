@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="list-group div-margin main_container" >
     <ng-container *ngFor="let msg of messages">
-      <a class="list-group-item" *ngIf="(msg.tag==this.data.selectedTag||this.data.selectedTag=='')&&(msg.status!=3)"  data-toggle="pill" href="#detail" (click)="getMessage(msg.id)">
+      <a class="list-group-item" *ngIf="(msg.tag==this.data.selectedTag||this.data.selectedTag=='')&&(msg.status==this.data.selectedStatus||(this.data.selectedStatus==1&&msg.status!=3))"  data-toggle="pill" href="#detail" (click)="getMessage(msg.id)">
         <h4 class="list-group-item-heading">{{msg.title}}
           <span class="label label-info"*ngIf="msg.tag!=''">{{msg.tag}}</span>
           <span class="label label-default" *ngIf="msg.status==1">New</span>

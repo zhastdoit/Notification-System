@@ -51,8 +51,14 @@ export class MessageModuleComponent implements OnInit {
 
   showTag(tag: string): void {
     this.data.selectedTag = tag;
+    this.data.selectedStatus = 1;
   }
-
+  showStar(): void{
+    this.data.selectedStatus = 4; //stared
+  }
+  showDelete(): void {
+    this.data.selectedStatus = 3; //deleted
+  }
   newmsg(): void {
     this.data.replyTitle = "";
     this.data.replyUser = [];
