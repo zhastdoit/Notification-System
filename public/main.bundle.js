@@ -434,7 +434,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 
-var SAMPLE_OPTIONS = ["CS503", "UX501"];
 var SAMPLE_NEWMESSAGE = {
     "title": "",
     "recId": [],
@@ -450,7 +449,7 @@ var NewMessageComponent = (function () {
         this.userGroup = "";
         this.choseOption = "";
         this.title = "";
-        this.options = SAMPLE_OPTIONS;
+        this.options = [];
     }
     NewMessageComponent.prototype.ngOnInit = function () {
         this.setOptions();
@@ -494,9 +493,9 @@ var NewMessageComponent = (function () {
                 this.options = group.concat(this.data.userProfile.adminGroupMembers);
                 console.log(this.options);
             }
+            else
+                this.options = this.data.userProfile.userGroup;
         }
-        else
-            this.options = this.data.userProfile.userGroup;
     };
     NewMessageComponent.prototype.sendMessage = function () {
         this.newmsg.parentId = "";

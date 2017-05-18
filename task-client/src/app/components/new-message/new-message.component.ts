@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NewMessage } from '../../models/newmessage.model';
 
-const SAMPLE_OPTIONS = ["CS503", "UX501"];
 const SAMPLE_NEWMESSAGE ={
   "title" : "",
   "recId": [],
@@ -9,18 +8,20 @@ const SAMPLE_NEWMESSAGE ={
   "parentId": "",
   "tag":""
 }
+
 @Component({
   selector: 'app-new-message',
   templateUrl: './new-message.component.html',
   styleUrls: ['./new-message.component.css']
 })
+
 export class NewMessageComponent implements OnInit {
   newmsg: NewMessage = SAMPLE_NEWMESSAGE;
   sendSuccess: boolean = false;
   userGroup: string = "";
   public choseOption: string ="";
   public title: string ="";
-  public options = SAMPLE_OPTIONS;
+  public options = [];
 
   constructor(@Inject('data') private data) { }
 
@@ -67,9 +68,9 @@ export class NewMessageComponent implements OnInit {
         this.options=group.concat(this.data.userProfile.adminGroupMembers);
         console.log(this.options);
       }
+      else
+        this.options=this.data.userProfile.userGroup;
     }
-    else
-      this.options=this.data.userProfile.userGroup;
   }
 
   sendMessage(){
