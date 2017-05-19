@@ -37,3 +37,6 @@
 .titlebutton{
   margin-top: 30px;
 }
+td {
+  white-space:pre;
+}

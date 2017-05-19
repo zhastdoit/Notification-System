@@ -14,19 +14,19 @@ export class ProfileComponent implements OnInit {
   constructor(@Inject('data') private data) { }
 
   ngOnInit() {
-      if(this.data.authenticated()) {
-        this.username = this.data.username;
-        if(this.data.isAdmin()){
-          this.accountType=" Administrative ";
-          this.note = "You can send group messages to:";
-          this.members = this.data.userProfile.adminGroupMembers;
-        } else
-          this.accountType=" Student ";
-          this.note = "You can contact with:"
-          this.members = this.data.userProfile.userGroup;
-        }
+    if (this.data.authenticated()) {
+      this.username = this.data.username;
+      if (this.data.isAdmin()) {
+        this.accountType = "This is an Administrative Account.";
+        this.note = "You can send group messages to:";
+        this.members = this.data.userProfile.adminGroupMembers;
+      } else {
+        this.accountType = "This is a Student account.";
+        this.note = "You can contact with:";
+        this.members = this.data.userProfile.userGroup;
+      }
+    }
   }
-
 
   logout(): void {
     this.username="";

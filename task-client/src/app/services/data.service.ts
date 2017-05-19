@@ -6,8 +6,6 @@ import { Http, Response, Headers } from '@angular/http';
 import { BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
-import { Subscription } from 'rxjs/Subscription';
-import {stringify} from "querystring";
 
 const DEFAULT_PROFILE ={
   "admin": "",
@@ -88,6 +86,7 @@ export class DataService {
       })
       .catch(this.handleError);
   }
+
   readMsg(){
     if (this.message.status==1) {
       let content = {
@@ -141,9 +140,7 @@ export class DataService {
       .catch(this.handleError);
   }
 
-  // error hanlder
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.body || error);
   }
 }
