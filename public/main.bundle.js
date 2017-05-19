@@ -720,7 +720,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -756,7 +756,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, ".input-session  {\n  border: 1px solid rgba(0, 0, 0, .15);\n  overflow-y: auto;\n  height: 35vh;\n  resize: none;\n}\n\n.output-session {\n  padding: 5px 10px 10px 10px;\n  overflow: auto;\n  height: 55vh;\n}\n\n.keywordInput{\n  margin-top: 25px;\n  margin-bottom: 30px;\n}\n\n", ""]);
+exports.push([module.i, ".container-fluid{\n  background-color: #f7f7f7;\n}\n", ""]);
 
 // exports
 
@@ -828,7 +828,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, ".navbar-custom {\n  background-color:#656d74;\n  border-radius:0;\n}\n\n.navbar-nav > li > a {\n  padding-top:30px !important;\n  font-size: 15px !important;\n}\n\n.navbar-form {\n  padding-top: 16px !important;\n  color: white;\n}\n\n.navbar {\n  min-height: 80px !important\n}\n\n.navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {\n  background-color: transparent;\n}\n\n.output-session {\n  padding: 5px 10px 10px 10px;\n  overflow: auto;\n  max-height: 20vh;\n}\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 1000;\n  min-width: 400px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  list-style: none;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, .15);\n  border-radius: 1px;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n}\n\n.logo-bittiger {\n  height: 32px;\n  margin-top: 10px;\n}\n", ""]);
+exports.push([module.i, ".navbar-custom {\n  background-color:#656d74;\n  border-radius:0;\n\n}\n\n.navbar-nav > li > a {\n  padding-top:30px !important;\n  font-size: 15px !important;\n}\n\n.navbar-form {\n  padding-top: 16px !important;\n  color: white;\n}\n\n.navbar {\n  min-height: 80px !important;\n  margin-bottom: 0px !important;\n}\n\n.navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {\n  background-color: transparent;\n}\n\n.output-session {\n  padding: 5px 10px 10px 10px;\n  overflow: auto;\n  max-height: 20vh;\n}\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  z-index: 1000;\n  min-width: 400px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  list-style: none;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, .15);\n  border-radius: 1px;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n}\n\n.logo-bittiger {\n  height: 32px;\n  margin-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -891,7 +891,7 @@ module.exports = "<footer>\n  <nav class=\"navbar navbar-default navbar-fixed-bo
 /***/ 182:
 /***/ (function(module, exports) {
 
-module.exports = "<div class =\"container-fluid\">\n\n</div>\n"
+module.exports = "<div class =\"container-fluid\">\n  <img class=\"img-responsive center-block\" src=\"../../../assets/mainpagepic.png\">\n</div>\n"
 
 /***/ }),
 

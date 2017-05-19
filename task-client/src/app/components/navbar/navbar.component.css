@@ -1,6 +1,7 @@
 .navbar-custom {
   background-color:#656d74;
   border-radius:0;
+
 }
 
 .navbar-nav > li > a {
@@ -14,7 +15,8 @@
 }
 
 .navbar {
-  min-height: 80px !important
+  min-height: 80px !important;
+  margin-bottom: 0px !important;
 }
 
 .navbar .nav .open>.dropdown-toggle, .navbar .nav .active>.dropdown-toggle, .navbar .nav .open.active>.dropdown-toggle {
