@@ -28,7 +28,7 @@ export class MessageModuleComponent implements OnInit {
   getListInfo(): void {
     let count = 0;
     for (let message of this.messages){
-      if(message.status!=3)
+      if(message.status!=3&&message.tag!="")
         this.tags.push(message.tag.toString());
       if (message.status==1)
         count++;

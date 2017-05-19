@@ -38,12 +38,6 @@ export class NewMessageComponent implements OnInit {
       this.setOptions();
       this.data.isReply=false;
     }
-    // if(this.data.replyTitle==""){
-    //   this.newmsg.title = "";
-    //   this.newmsg.recId = [];
-    //   this.newmsg.text = "";
-    //   this.setOptions();
-    // }
     return true;
   }
   setReplyTo(){
@@ -75,16 +69,18 @@ export class NewMessageComponent implements OnInit {
 
   sendMessage(){
     this.newmsg.parentId="";
-    this.newmsg.tag=this.choseOption;
     if(this.data.isAdmin()){
-      if (this.choseOption==this.data.userProfile.adminGroup)
+      if (this.choseOption==this.data.userProfile.adminGroup){
         this.newmsg.recId = this.data.userProfile.adminGroupMembers;
-      else
-        this.newmsg.recId=[this.choseOption];
+        this.newmsg.tag=this.choseOption;
+      } else {
+        this.newmsg.recId = [this.choseOption];
+        this.newmsg.tag = "";
+      }
     } else {
+      this.newmsg.tag="";
       let contacts = this.data.userProfile.userGroupContacts;
       for (let i = 0; i < contacts.length; i++) {
-        // look for the entry with a matching `contacts` value
         if (contacts[i].name == this.choseOption) {
           this.newmsg.recId = [contacts[i].email];
         }

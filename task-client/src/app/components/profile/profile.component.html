@@ -12,14 +12,13 @@
                name="username" disabled value="{{username}}">
       </div>
       <div class="form-group col-sm-8">
-        <label for="nickname">Username</label>
-        <input type="text" class="form-control" id="nickname"
-               name="nickname" disabled value="{{nickname}}">
+        <label>This is an {{accountType}} account.</label>
       </div>
       <div class="form-group col-sm-8">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email"
-               name="email" disabled value="{{email}}">
+        <label for="members">{{note}}</label>
+        <div class="list-group" id="members">
+          <a class="list-group-item" *ngFor="let member of members">{{member}}</a>
+        </div>
       </div>
     </div>
     <div id="other" class="tab-pane fade">

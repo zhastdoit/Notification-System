@@ -50,7 +50,7 @@
         <li class="dropdown" *ngIf="isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" *ngIf="username">{{username}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!--<li><a routerLink="/profile">My Profile</a></li>-->
+            <li><a routerLink="/profile">My Profile</a></li>
             <li><a href="#" (click)="logout()">Log Out</a></li>
           </ul>
         </li>

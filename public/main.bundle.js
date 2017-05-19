@@ -463,12 +463,6 @@ var NewMessageComponent = (function () {
             this.setOptions();
             this.data.isReply = false;
         }
-        // if(this.data.replyTitle==""){
-        //   this.newmsg.title = "";
-        //   this.newmsg.recId = [];
-        //   this.newmsg.text = "";
-        //   this.setOptions();
-        // }
         return true;
     };
     NewMessageComponent.prototype.setReplyTo = function () {
@@ -499,17 +493,20 @@ var NewMessageComponent = (function () {
     };
     NewMessageComponent.prototype.sendMessage = function () {
         this.newmsg.parentId = "";
-        this.newmsg.tag = this.choseOption;
         if (this.data.isAdmin()) {
-            if (this.choseOption == this.data.userProfile.adminGroup)
+            if (this.choseOption == this.data.userProfile.adminGroup) {
                 this.newmsg.recId = this.data.userProfile.adminGroupMembers;
-            else
+                this.newmsg.tag = this.choseOption;
+            }
+            else {
                 this.newmsg.recId = [this.choseOption];
+                this.newmsg.tag = "";
+            }
         }
         else {
+            this.newmsg.tag = "";
             var contacts = this.data.userProfile.userGroupContacts;
             for (var i = 0; i < contacts.length; i++) {
-                // look for the entry with a matching `contacts` value
                 if (contacts[i].name == this.choseOption) {
                     this.newmsg.recId = [contacts[i].email];
                 }
@@ -924,7 +921,7 @@ module.exports = "<div class =\"container-fluid\">\n  <div class=\"col-sm-3\">\n
 /***/ 186:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse navbar-custom\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header navbar-custom\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">\n        <img class=\"logo-bittiger img-responsive\" alt=\"Brand\" src=\"//cdn-i2.tianmaying.com/public/homeV1/logo-tpye@3x.png\">\n      </a>\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse \" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li *ngIf=\"!isAuthenticated()\">\n          <form class=\"navbar-form\">\n            <label for=\"email\">E-mail</label>\n            <input required name=\"email\" id=\"email\" type=\"text\"\n                   class=\"form-control\" placeholder=\"Enter your email here...\"\n                   [(ngModel)]=\"loginPairs.email\">\n            <label for=\"password\">Password</label>\n            <input\n              required name=\"password\" id=\"password\" type=\"password\"\n              class=\"form-control\" placeholder=\"Enter your password here...\"\n              [(ngModel)]=\"loginPairs.password\">\n            <button\n              type=\"submit\" class=\"btn btn-default\"\n              (click)=\"login()\"> Log In </button>\n          </form>\n        </li>\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> <span style=\"font-size: 20px\" class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li>\n              <div class=\"list-group div-margin-nav output-session\" *ngIf=\"messages\">\n                <div *ngFor=\"let msg of messages\">\n                  <ng-container *ngIf=\"msg.status!=3\">\n                    <a class=\"list-group-item\" routerLink=\"/messages\" href=\"#detail\" (click)=\"getMessage(msg.id)\">{{msg.title}}</a>\n                  </ng-container>\n                </div>\n              </div>\n              <a routerLink=\"/messages\">All Messages</a>\n              <!--<li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>-->\n            </li>\n          </ul>\n        </li>\n\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" *ngIf=\"username\">{{username}} <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <!--<li><a routerLink=\"/profile\">My Profile</a></li>-->\n            <li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-inverse navbar-custom\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header navbar-custom\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">\n        <img class=\"logo-bittiger img-responsive\" alt=\"Brand\" src=\"//cdn-i2.tianmaying.com/public/homeV1/logo-tpye@3x.png\">\n      </a>\n    </div>\n\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse \" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li *ngIf=\"!isAuthenticated()\">\n          <form class=\"navbar-form\">\n            <label for=\"email\">E-mail</label>\n            <input required name=\"email\" id=\"email\" type=\"text\"\n                   class=\"form-control\" placeholder=\"Enter your email here...\"\n                   [(ngModel)]=\"loginPairs.email\">\n            <label for=\"password\">Password</label>\n            <input\n              required name=\"password\" id=\"password\" type=\"password\"\n              class=\"form-control\" placeholder=\"Enter your password here...\"\n              [(ngModel)]=\"loginPairs.password\">\n            <button\n              type=\"submit\" class=\"btn btn-default\"\n              (click)=\"login()\"> Log In </button>\n          </form>\n        </li>\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> <span style=\"font-size: 20px\" class=\"glyphicon glyphicon-bell\" aria-hidden=\"true\"></span> <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li>\n              <div class=\"list-group div-margin-nav output-session\" *ngIf=\"messages\">\n                <div *ngFor=\"let msg of messages\">\n                  <ng-container *ngIf=\"msg.status!=3\">\n                    <a class=\"list-group-item\" routerLink=\"/messages\" href=\"#detail\" (click)=\"getMessage(msg.id)\">{{msg.title}}</a>\n                  </ng-container>\n                </div>\n              </div>\n              <a routerLink=\"/messages\">All Messages</a>\n              <!--<li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>-->\n            </li>\n          </ul>\n        </li>\n\n        <li class=\"dropdown\" *ngIf=\"isAuthenticated()\">\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" *ngIf=\"username\">{{username}} <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a routerLink=\"/profile\">My Profile</a></li>\n            <li><a href=\"#\" (click)=\"logout()\">Log Out</a></li>\n          </ul>\n        </li>\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
 
 /***/ }),
 
@@ -938,7 +935,7 @@ module.exports = "<div class=\"container-fluid main_container\">\n  <div>\n    <
 /***/ 188:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <ul class=\"nav nav-tabs\">\n    <li class=\"active\"><a data-toggle=\"pill\" href=\"#profile\">Personal Information</a></li>\n    <li><a data-toggle=\"pill\" href=\"#other\">Options</a></li>\n  </ul>\n  <br>\n  <div class=\"tab-content\">\n    <div id=\"profile\" class=\"tab-pane fade in active\">\n      <div class=\"form-group col-sm-8\">\n        <label for=\"username\">AccountID</label>\n        <input type=\"text\" class=\"form-control\" id=\"username\"\n               name=\"username\" disabled value=\"{{username}}\">\n      </div>\n      <div class=\"form-group col-sm-8\">\n        <label for=\"nickname\">Username</label>\n        <input type=\"text\" class=\"form-control\" id=\"nickname\"\n               name=\"nickname\" disabled value=\"{{nickname}}\">\n      </div>\n      <div class=\"form-group col-sm-8\">\n        <label for=\"email\">Email</label>\n        <input type=\"text\" class=\"form-control\" id=\"email\"\n               name=\"email\" disabled value=\"{{email}}\">\n      </div>\n    </div>\n    <div id=\"other\" class=\"tab-pane fade\">\n      <form class=\"navbar-form\">\n        <button type=\"button\" class=\"btn btn-large btn-success\" routerLink=\"/home\" (click)=\"logout()\">Log Out {{email}}</button>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <ul class=\"nav nav-tabs\">\n    <li class=\"active\"><a data-toggle=\"pill\" href=\"#profile\">Personal Information</a></li>\n    <li><a data-toggle=\"pill\" href=\"#other\">Options</a></li>\n  </ul>\n  <br>\n  <div class=\"tab-content\">\n    <div id=\"profile\" class=\"tab-pane fade in active\">\n      <div class=\"form-group col-sm-8\">\n        <label for=\"username\">AccountID</label>\n        <input type=\"text\" class=\"form-control\" id=\"username\"\n               name=\"username\" disabled value=\"{{username}}\">\n      </div>\n      <div class=\"form-group col-sm-8\">\n        <label>This is an {{accountType}} account.</label>\n      </div>\n      <div class=\"form-group col-sm-8\">\n        <label for=\"members\">{{note}}</label>\n        <div class=\"list-group\" id=\"members\">\n          <a class=\"list-group-item\" *ngFor=\"let member of members\">{{member}}</a>\n        </div>\n      </div>\n    </div>\n    <div id=\"other\" class=\"tab-pane fade\">\n      <form class=\"navbar-form\">\n        <button type=\"button\" class=\"btn btn-large btn-success\" routerLink=\"/home\" (click)=\"logout()\">Log Out {{email}}</button>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1028,7 +1025,7 @@ var MessageModuleComponent = (function () {
         var count = 0;
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var message = _a[_i];
-            if (message.status != 3)
+            if (message.status != 3 && message.tag != "")
                 this.tags.push(message.tag.toString());
             if (message.status == 1)
                 count++;
@@ -1098,22 +1095,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 
 var ProfileComponent = (function () {
-    function ProfileComponent(auth) {
-        this.auth = auth;
+    function ProfileComponent(data) {
+        this.data = data;
         this.username = ""; //AccountID
-        this.nickname = ""; //Username
-        this.email = "";
+        this.accountType = ""; //Username
+        this.note = "";
+        this.members = [];
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        var profile = this.auth.getProfile();
-        if (this.auth.authenticated()) {
-            this.email = profile.email;
-            this.username = profile.name;
-            this.nickname = profile.nickname;
+        if (this.data.authenticated()) {
+            this.username = this.data.username;
+            if (this.data.isAdmin()) {
+                this.accountType = " Administrative ";
+                this.note = "You can send group messages to:";
+                this.members = this.data.userProfile.adminGroupMembers;
+            }
+            else
+                this.accountType = " Student ";
+            this.note = "You can contact with:";
+            this.members = this.data.userProfile.userGroup;
         }
     };
     ProfileComponent.prototype.logout = function () {
-        this.auth.logout();
+        this.username = "";
+        this.note = "";
+        this.members = [];
+        this.data.logout();
     };
     return ProfileComponent;
 }());
@@ -1123,7 +1130,7 @@ ProfileComponent = __decorate([
         template: __webpack_require__(188),
         styles: [__webpack_require__(174)]
     }),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Inject */])('auth')),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Inject */])('data')),
     __metadata("design:paramtypes", [Object])
 ], ProfileComponent);
 

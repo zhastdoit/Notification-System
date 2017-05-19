@@ -8,20 +8,30 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class ProfileComponent implements OnInit {
 
   username: string = ""; //AccountID
-  nickname: string = ""; //Username
-  email: string = "";
-  constructor(@Inject('auth') private auth) { }
+  accountType: string = ""; //Username
+  note: string = "";
+  members= [];
+  constructor(@Inject('data') private data) { }
 
   ngOnInit() {
-      let profile = this.auth.getProfile();
-      if(this.auth.authenticated()) {
-        this.email = profile.email;
-        this.username = profile.name;
-        this.nickname = profile.nickname;
-      }
+      if(this.data.authenticated()) {
+        this.username = this.data.username;
+        if(this.data.isAdmin()){
+          this.accountType=" Administrative ";
+          this.note = "You can send group messages to:";
+          this.members = this.data.userProfile.adminGroupMembers;
+        } else
+          this.accountType=" Student ";
+          this.note = "You can contact with:"
+          this.members = this.data.userProfile.userGroup;
+        }
   }
 
+
   logout(): void {
-    this.auth.logout();
+    this.username="";
+    this.note="";
+    this.members=[];
+    this.data.logout();
   }
 }
